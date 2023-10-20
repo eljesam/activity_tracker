@@ -20,7 +20,7 @@ public class Activities {
     //field calories burnt
     private int caloriesBurnt;
     //default constructor
-    public activities(){
+    public Activities(){
         type = " ";
         duration = 0;
         date = " ";
@@ -30,7 +30,7 @@ public class Activities {
         caloriesBurnt = 0;
     }
     //constructor
-    public activities(String type, int duration, String date, double distance, int averageHeartRate, int energy, int caloriesBurnt){
+    public Activities(String type, int duration, String date, double distance, int averageHeartRate, int energy, int caloriesBurnt){
         this.type = type;
         this.duration = duration;
         this.date = date;
