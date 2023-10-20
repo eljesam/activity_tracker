@@ -1,4 +1,4 @@
-public class activities {
+public class Activities {
     //field type of activity
     private String type;
 
