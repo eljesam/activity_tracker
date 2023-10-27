@@ -1,4 +1,4 @@
-public class Activity {
+public abstract class Activity {
     //field type of activity
     private String type;
     private String date;
@@ -82,8 +82,8 @@ public class Activity {
     }
 
     //create an abstract method called caloriesBurned
-    abstract class caloriesBurned {
+
         public abstract double caloriesBurned();
-    }
+
 }
 
