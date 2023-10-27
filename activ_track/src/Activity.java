@@ -15,15 +15,16 @@ public class Activity {
     private int averageHeartRate;
 
     //default constructor
-    public Activity(){
+    public Activity() {
         type = " ";
         duration = 0;
         date = " ";
         distance = 0.0;
         averageHeartRate = 0;
     }
+
     //constructor
-    public Activity(String type, int duration, String date, double distance, int averageHeartRate){
+    public Activity(String type, int duration, String date, double distance, int averageHeartRate) {
         this.type = type;
         this.duration = duration;
         this.date = date;
@@ -35,42 +36,54 @@ public class Activity {
     public String getType() {
         return type;
     }
-    public int getDuration(){
+
+    public int getDuration() {
         return duration;
     }
-    public String getDate(){
+
+    public String getDate() {
         return date;
     }
-    public double getDistance(){
+
+    public double getDistance() {
         return distance;
     }
-    public int getAverageHeartRate(){
+
+    public int getAverageHeartRate() {
         return averageHeartRate;
     }
+
     //setters
-    public void setType(String type){
+    public void setType(String type) {
         this.type = type;
     }
-    public void setDuration(int duration){
+
+    public void setDuration(int duration) {
         this.duration = duration;
     }
-    public void setDate(String date){
+
+    public void setDate(String date) {
         this.date = date;
     }
-    public void setDistance(double distance){
+
+    public void setDistance(double distance) {
         this.distance = distance;
     }
-    public void setAverageHeartRate(int averageHeartRate){
+
+    public void setAverageHeartRate(int averageHeartRate) {
         this.averageHeartRate = averageHeartRate;
     }
 
     //toString method
 
     @Override
-    public String toString(){
-        return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate ;
+    public String toString() {
+        return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate;
     }
 
-
-
+    //create an abstract method called caloriesBurned
+    abstract class caloriesBurned {
+        public abstract double caloriesBurned();
+    }
 }
+
