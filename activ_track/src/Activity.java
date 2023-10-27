@@ -82,6 +82,7 @@ public abstract class Activity {
         return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate;
     }
 
+    public abstract Intensity getIntensity();
    public abstract double getCaloriesBurned();
 
     public abstract double getEnergySpent();
