@@ -5,6 +5,7 @@ public abstract class Activity {
     //field duration
     private int duration;
 
+
     //field date
 
 
@@ -81,9 +82,7 @@ public abstract class Activity {
         return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate;
     }
 
-    //create an abstract method called caloriesBurned
+   public abstract double getCaloriesBurned();
 
-        public abstract double caloriesBurned();
-
+    public abstract double getEnergySpent();
 }
-
