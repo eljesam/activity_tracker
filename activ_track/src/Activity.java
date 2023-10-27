@@ -85,4 +85,12 @@ public abstract class Activity {
    public abstract double getCaloriesBurned();
 
     public abstract double getEnergySpent();
+
+
+
 }
+
+
+
+
+
