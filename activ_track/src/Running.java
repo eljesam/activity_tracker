@@ -1,10 +1,16 @@
 public class Running extends Activity {
-    @Override
+
+    public Running(String type, int duration, String date, double distance, int averageHeartRate) {
+        super(type, duration, date, distance, averageHeartRate);
+    }
+    public Intensity getIntensity() {
+        return null;
+    }
+
     public double getCaloriesBurned() {
         return 0;
     }
 
-    @Override
     public double getEnergySpent() {
         return 0;
     }

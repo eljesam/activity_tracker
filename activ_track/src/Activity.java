@@ -81,6 +81,20 @@ public abstract class Activity {
     public String toString() {
         return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate;
     }
+    //equals to method
+
+    @Override
+    public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Activity)) return false;
+            Activity activity = (Activity) o;
+            return getDuration() == activity.getDuration() &&
+                    Double.compare(activity.getDistance(), getDistance()) == 0 &&
+                    getAverageHeartRate() == activity.getAverageHeartRate() &&
+                    getType().equals(activity.getType()) &&
+                    getDate().equals(activity.getDate());
+    }
+
 
     public abstract Intensity getIntensity();
    public abstract double getCaloriesBurned();

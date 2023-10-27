@@ -1,8 +1,9 @@
-import java.util.Scanner;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void readFile(String filename,
@@ -25,7 +26,7 @@ public class Main {
         }
     }
 
-    public static Activity parseLine(String line){
+    public static Activity parseLine(String line) {
         String type;
         int duration;
         String date;
@@ -37,7 +38,13 @@ public class Main {
         duration = Integer.parseInt(st.nextToken().trim());
         distance = Double.parseDouble(st.nextToken().trim());
         averageHeartRate = Integer.parseInt(st.nextToken().trim());
-        return new Activity(type, duration, date, distance, averageHeartRate);
+        if (Objects.equals(type, "Running")){
+            return new Running(type, duration, date, distance, averageHeartRate);
+        } else if (Objects.equals(type, "Cycling")) {
+            return new Cycling(type, duration, date, distance, averageHeartRate);
+        } else {
+            return new Swimming(type, duration, date, distance, averageHeartRate);
+        }
     }
 
     public static void main(String[] args) throws IOException {
