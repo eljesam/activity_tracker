@@ -14,4 +14,5 @@ public class Cycling extends Activity{
     public double getEnergySpent() {
         return 0;
     }
+
 }

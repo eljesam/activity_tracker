@@ -95,6 +95,15 @@ public abstract class Activity {
                     getDate().equals(activity.getDate());
     }
 
+    //calculate the duration from minutes to hours
+    public double durationInHours(){
+        return duration/60.0;
+    }
+
+    //calculate the average speed
+    public  double getAverageSpeed(double distance, double durationInHours){
+        return distance/durationInHours();
+    }
 
     public abstract Intensity getIntensity();
    public abstract double getCaloriesBurned();
