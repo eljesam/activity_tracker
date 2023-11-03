@@ -4,7 +4,7 @@ public class Running extends Activity {
         super(type, duration, date, distance, averageHeartRate);
     }
 
-    public Intensity getIntensity()
+    public Intensity getIntensity(Activity r)
     {
         //if speed is less than 4 km/h, return VERY_LIGHT
         if (r.getAverageSpeed(r.getDistance(),r.durationInHours()) < 4) {
