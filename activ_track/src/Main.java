@@ -6,8 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-    public static void readFile(String filename,
-                                ArrayList<Activity> activities,
+    public static void displayMenu(){
+        System.out.println("1. Display all activities");
+    }
+    public static void readFile(String filename, ArrayList<Activity> activities,
                                 boolean hasHeaders) throws IOException {
         File file = new File(filename);
         Scanner in = new Scanner(file);
@@ -27,6 +29,7 @@ public class Main {
     }
 
     public static Activity parseLine(String line) {
+
         String type;
         int duration;
         String date;
@@ -40,6 +43,7 @@ public class Main {
         averageHeartRate = Integer.parseInt(st.nextToken().trim());
         if (Objects.equals(type, "Running")){
             return new Running(type, duration, date, distance, averageHeartRate);
+
         } else if (Objects.equals(type, "Cycling")) {
             return new Cycling(type, duration, date, distance, averageHeartRate);
         } else {
@@ -48,13 +52,25 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        Scanner input = new Scanner(System.in);
+        User a = new User("John");
         ArrayList<Activity> activities = new ArrayList<>();
         readFile("activity_data_10.csv", activities, true);
-        for (Activity a : activities) {
-            if (Objects.equals(a.getType(), "Running")){
-                System.out.println(a.toString());
+        a.activities = activities;
+        displayMenu();
+        int choice = input.nextInt();
+        while (choice != 0) {
+            switch (choice) {
+                case 1:
+                    a.display();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
             }
-
+            displayMenu();
+            choice = input.nextInt();
         }
+
+
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Activity {
     //field type of activity
     private String type;
@@ -14,6 +16,7 @@ public abstract class Activity {
 
     //field average heart rate
     private int averageHeartRate;
+
 
     //default constructor
     public Activity() {
@@ -109,6 +112,7 @@ public abstract class Activity {
    public abstract double getCaloriesBurned();
 
     public abstract double getEnergySpent();
+
 
 
 
