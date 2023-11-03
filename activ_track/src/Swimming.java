@@ -1,37 +1,42 @@
 public class Swimming extends Activity{
-
+    private Intensity intensity;
+    private double caloriesBurnt;
+    private double energySpent;
     public Swimming(String type, int duration, String date, double distance, int averageHeartRate) {
         super(type, duration, date, distance, averageHeartRate);
+        this.intensity= getIntensity();
+        this.caloriesBurnt=getCaloriesBurned();
+        this.energySpent=getEnergySpent();
     }
-    public Intensity getIntensity(Activity s) {
-        if (s.getAverageSpeed(s.getDistance(),s.durationInHours()) < 4) {
+    public Intensity getIntensity() {
+        if (getAverageSpeed(getDistance(),durationInHours()) < 4) {
             return Intensity.VERY_LIGHT;
-        } else if (s.getAverageSpeed(s.getDistance(),s.durationInHours()) >= 4 && s.getAverageSpeed(s.getDistance(),s.durationInHours()) < 8) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 4 && getAverageSpeed(getDistance(),durationInHours()) < 8) {
             return Intensity.LIGHT;
-        } else if (s.getAverageSpeed(s.getDistance(),s.durationInHours()) >= 8 && s.getAverageSpeed(s.getDistance(),s.durationInHours()) < 12) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 8 && getAverageSpeed(getDistance(),durationInHours()) < 12) {
             return Intensity.MODERATE;
-        } else if (s.getAverageSpeed(s.getDistance(),s.durationInHours()) >= 12 && s.getAverageSpeed(s.getDistance(),s.durationInHours()) < 16) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 12 && getAverageSpeed(getDistance(),durationInHours()) < 16) {
             return Intensity.VIGOROUS;
-        } else if (s.getAverageSpeed(s.getDistance(),s.durationInHours()) >= 16)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 16)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;
         }
     }
 
-    public double getCaloriesBurned(Activity s) {
-        return s.getEnergySpent(s)*s.getDuration();
+    public double getCaloriesBurned() {
+        return getEnergySpent()*getDuration();
     }
 
 
-    public double getEnergySpent(Activity s) {
-        if (s.getIntensity(s) == Intensity.VERY_LIGHT) {
+    public double getEnergySpent() {
+        if (getIntensity() == Intensity.VERY_LIGHT) {
             return 5;
-        } else if (s.getIntensity(s) == Intensity.LIGHT) {
+        } else if (getIntensity() == Intensity.LIGHT) {
             return 6.3;
-        } else if (s.getIntensity(s) == Intensity.MODERATE) {
+        } else if (getIntensity() == Intensity.MODERATE) {
             return 7.6;
-        } else if (s.getIntensity(s) == Intensity.VIGOROUS) {
+        } else if (getIntensity() == Intensity.VIGOROUS) {
             return 8.9;
         } else {
             return 10.2;

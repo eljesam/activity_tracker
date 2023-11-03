@@ -105,10 +105,10 @@ public abstract class Activity {
         return distance/durationInHours();
     }
 
-    public abstract Intensity getIntensity(Activity a);
-   public abstract double getCaloriesBurned(Activity a);
+    public abstract Intensity getIntensity();
+   public abstract double getCaloriesBurned();
 
-    public abstract double getEnergySpent(Activity a);
+    public abstract double getEnergySpent();
 
 
 
