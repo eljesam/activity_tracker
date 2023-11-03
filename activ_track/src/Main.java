@@ -51,7 +51,10 @@ public class Main {
         ArrayList<Activity> activities = new ArrayList<>();
         readFile("activity_data_10.csv", activities, true);
         for (Activity a : activities) {
-            System.out.println(a.getDistance());
+            if (Objects.equals(a.getType(), "Running")){
+                System.out.println(a.toString());
+            }
+
         }
     }
 }

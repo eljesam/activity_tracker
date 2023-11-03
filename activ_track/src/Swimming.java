@@ -42,4 +42,7 @@ public class Swimming extends Activity{
             return 10.2;
         }
     }
+    public String toString(){
+        return "Swimming{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent;
+    }
 }

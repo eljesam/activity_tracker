@@ -79,7 +79,7 @@ public abstract class Activity {
 
     @Override
     public String toString() {
-        return "Type: " + type + "\nDuration: " + duration + "\nDate: " + date + "\nDistance: " + distance + "\nAverage Heart Rate: " + averageHeartRate;
+        return "Type: " + type + "\tDuration: " + duration + "\tDate: " + date + "\tDistance: " + distance + "\tAverage Heart Rate: " + averageHeartRate;
     }
     //equals to method
 

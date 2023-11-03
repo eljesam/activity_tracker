@@ -40,5 +40,8 @@ public class Cycling extends Activity{
         } else {
             return 15;
     }
-
-}}
+}
+    public String toString(){
+        return "Cycling{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent;
+    }
+}
