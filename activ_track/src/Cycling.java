@@ -19,12 +19,21 @@ public class Cycling extends Activity{
         }
     }
 
-    public double getCaloriesBurned() {
-        return 0;
+    public double getCaloriesBurned(Activity c) {
+        return c.getEnergySpent(c)*c.getDuration();
     }
 
-    public double getEnergySpent() {
-        return 0;
+    public double getEnergySpent(Activity c) {
+        if (c.getIntensity(c) == Intensity.VERY_LIGHT) {
+            return 2;
+        } else if (c.getIntensity(c) == Intensity.LIGHT) {
+            return 5;
+        }else if (c.getIntensity(c)==Intensity.MODERATE){
+            return 7;
+        } else if (c.getIntensity(c)==Intensity.VIGOROUS){
+            return 13;
+        } else {
+            return 15;
     }
 
-}
+}}

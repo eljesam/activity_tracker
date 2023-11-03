@@ -106,9 +106,9 @@ public abstract class Activity {
     }
 
     public abstract Intensity getIntensity(Activity a);
-   public abstract double getCaloriesBurned();
+   public abstract double getCaloriesBurned(Activity a);
 
-    public abstract double getEnergySpent();
+    public abstract double getEnergySpent(Activity a);
 
 
 

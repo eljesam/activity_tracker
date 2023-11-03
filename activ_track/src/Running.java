@@ -22,13 +22,25 @@ public class Running extends Activity {
         }
     }
 
-    public double getCaloriesBurned() {
-        return 0;
+    public double getCaloriesBurned(Activity r) {
+        //intensity*duration in minutes
+        return r.getEnergySpent(r)*r.getDuration();
+
     }
 
-    public double getEnergySpent() {
-        return 0;
+    public double getEnergySpent(Activity r) {
+        if (r.getIntensity(r) == Intensity.VERY_LIGHT) {
+            return 4.1;
+        } else if (r.getIntensity(r) == Intensity.LIGHT) {
+return 7.2;
+        }else if (r.getIntensity(r)==Intensity.MODERATE){
+            return 10;
+        } else if (r.getIntensity(r)==Intensity.VIGOROUS){
+            return 15.4;
+        } else {
+            return 20.8;
+        }
+
+
     }
-
-
 }
