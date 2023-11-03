@@ -26,5 +26,5 @@ public class Swimming extends Activity{
 
     public double getEnergySpent() {
         return 0;
-
+    }
 }
