@@ -10,7 +10,7 @@ public class Main {
         System.out.println("0. Exit");
         System.out.println("1. Display all activities");
         System.out.println("2. Display all activities by natural ordering");
-        System.out.println("3. Display all activities by calories burnt");
+        System.out.println("3. Display activities based on the longest distance per time");
         System.out.println("4. Display all activities by type");
         System.out.println("5. Display all activities by duration");
 //        System.out.println("6. Display all activities by date");
