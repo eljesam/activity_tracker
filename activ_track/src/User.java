@@ -59,4 +59,34 @@ display();
         display();
     }
 
+    public void displayByHeartRate(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return b.getAverageHeartRate() - a.getAverageHeartRate();
+                });
+        display();
+    }
+
+    public void displayByDistance(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return Double.compare(b.getDistance(), a.getDistance());
+                });
+        display();
+    }
+
+    public void displayByIntensity() {
+        Collections.sort(activities,
+                Comparator.comparing(Activity::getIntensity));
+        display();
+    }
+
+//    public void displayByDate() {
+//        Collections.sort(activities,
+//                (Activity a, Activity b) -> {
+//                    return a.getDate().compareTo(b.getDate());
+//                });
+//        display();
+//    }
+
 }

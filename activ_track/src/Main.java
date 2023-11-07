@@ -13,6 +13,10 @@ public class Main {
         System.out.println("3. Display all activities by calories burnt");
         System.out.println("4. Display all activities by type");
         System.out.println("5. Display all activities by duration");
+//        System.out.println("6. Display all activities by date");
+        System.out.println("6. Display all activities by distance");
+        System.out.println("7. Display all activities by average heart rate");
+        System.out.println("8. Display all activities by intensity");
     }
     public static void readFile(String filename, ArrayList<Activity> activities,
                                 boolean hasHeaders) throws IOException {
@@ -90,6 +94,18 @@ public class Main {
                     break;
                 case 5:
                     a.displayByDuration();
+                    break;
+//                case 6:
+//                    a.displayByDate();
+//                    break;
+                case 6:
+                    a.displayByDistance();
+                    break;
+                case 7:
+                    a.displayByHeartRate();
+                    break;
+                case 8:
+                    a.displayByIntensity();
                     break;
 
                 default:
