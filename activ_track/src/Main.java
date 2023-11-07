@@ -90,6 +90,7 @@ public class Main {
             default:
                 System.out.println("Invalid choice");
         }
+        //readFile("activity_data_10.csv", activities, true);
 
 
 
