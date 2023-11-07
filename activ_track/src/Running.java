@@ -24,7 +24,7 @@ public class Running extends Activity {
             return Intensity.MODERATE;
         } else if (getAverageSpeed(getDistance(),durationInHours()) <= 16) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 24)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >16)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;

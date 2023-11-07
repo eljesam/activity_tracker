@@ -60,7 +60,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         User a = new User("John");
         ArrayList<Activity> activities = new ArrayList<>();
-        readFile("activity_data_10.csv", activities, true);
+        readFile("activity_data_50.csv", activities, true);
         a.activities = activities;
         displayMenu();
         int choice = input.nextInt();

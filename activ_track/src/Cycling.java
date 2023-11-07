@@ -17,7 +17,7 @@ public class Cycling extends Activity{
             return Intensity.MODERATE;
         } else if (getAverageSpeed(getDistance(),durationInHours()) <= 33) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 40)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >33)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;

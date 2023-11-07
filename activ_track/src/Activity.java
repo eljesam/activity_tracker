@@ -101,9 +101,9 @@ public abstract class Activity implements Comparable<Activity> {
     @Override
     public int compareTo(Activity a) {
         if (this.getCaloriesBurned() > a.getCaloriesBurned()) {
-            return 1;
-        } else if (this.getCaloriesBurned() < a.getCaloriesBurned()) {
             return -1;
+        } else if (this.getCaloriesBurned() < a.getCaloriesBurned()) {
+            return 1;
         } else {
             return 0;
         }

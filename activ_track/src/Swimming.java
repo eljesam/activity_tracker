@@ -17,7 +17,7 @@ public class Swimming extends Activity{
             return Intensity.MODERATE;
         } else if (getAverageSpeed(getDistance(),durationInHours()) <=2.75) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 3.5)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) >2.75)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;
