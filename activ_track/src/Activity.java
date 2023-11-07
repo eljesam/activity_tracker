@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Activity {
+public abstract class Activity implements Comparable<Activity> {
     //field type of activity
     private String type;
     private String date;
@@ -98,6 +98,16 @@ public abstract class Activity {
                     getDate().equals(activity.getDate());
     }
 
+    @Override
+    public int compareTo(Activity a) {
+        if (this.getCaloriesBurned() > a.getCaloriesBurned()) {
+            return 1;
+        } else if (this.getCaloriesBurned() < a.getCaloriesBurned()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
     //calculate the duration from minutes to hours
     public double durationInHours(){
         return duration/60.0;

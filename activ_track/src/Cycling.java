@@ -9,15 +9,15 @@ public class Cycling extends Activity{
         this.energySpent=getEnergySpent();
     }
     public Intensity getIntensity() {
-        if (getAverageSpeed(getDistance(),durationInHours()) < 4) {
+        if (getAverageSpeed(getDistance(),durationInHours()) < 8) {
             return Intensity.VERY_LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 4 && getAverageSpeed(getDistance(),durationInHours()) < 8) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 16) {
             return Intensity.LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 8 && getAverageSpeed(getDistance(),durationInHours()) < 12) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 25) {
             return Intensity.MODERATE;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 12 && getAverageSpeed(getDistance(),durationInHours()) < 16) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 33) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 16)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 40)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;
@@ -42,6 +42,6 @@ public class Cycling extends Activity{
     }
 }
     public String toString(){
-        return "Cycling{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent;
+        return "Cycling{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent+"}";
     }
 }

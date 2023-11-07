@@ -1,3 +1,4 @@
+
 public class Running extends Activity {
     private Intensity intensity;
     private double caloriesBurnt;
@@ -15,15 +16,15 @@ public class Running extends Activity {
     {
 
         //if speed is less than 4 km/h, return VERY_LIGHT
-        if (getAverageSpeed(getDistance(),durationInHours()) < 4) {
+        if (getAverageSpeed(getDistance(),durationInHours()) <= 4) {
             return Intensity.VERY_LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 4 &&getAverageSpeed(getDistance(),durationInHours()) < 8) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 8) {
             return Intensity.LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 8 && getAverageSpeed(getDistance(),durationInHours()) < 12) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 12) {
             return Intensity.MODERATE;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 12 && getAverageSpeed(getDistance(),durationInHours()) < 16) {
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 16) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >= 16)
+        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 24)
             return Intensity.VERY_VIGOROUS;
         else{
             return null;
@@ -51,7 +52,7 @@ public class Running extends Activity {
     }
 
         public String toString(){
-return "Running{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent;
+return "Running{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent+"}";
         }
 
 

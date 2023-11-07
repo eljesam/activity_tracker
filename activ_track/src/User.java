@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class User {
     private String name;
-    ArrayList<Activity> activities = new ArrayList<>();
+    ArrayList<Activity> activities = new ArrayList<Activity>();
 
     public User(String name){
         this.name = name;
@@ -23,4 +25,38 @@ public class User {
             System.out.printf("%20s %30s %30d %30.2f %30d %30s %30.2f %30.2f\n", activities.getType(), activities.getDate(), activities.getDuration(), activities.getDistance(), activities.getAverageHeartRate(), activities.getIntensity(),activities.getCaloriesBurned(), activities.getEnergySpent());
         }
     }
+
+public void displayByNaturalOrdering(){
+Collections.sort(activities);
+display();
+}
+
+    public void displayByCalories(){
+        Collections.sort(activities, new Comparator<Activity>(){
+            public int compare(Activity a, Activity b){
+                   return Double.compare(a.getCaloriesBurned(), b.getCaloriesBurned());
+
+            }
+        });
+        display();
+    }
+
+    public ArrayList<Activity> displayByType(String s){
+        ArrayList<Activity> temp = new ArrayList<Activity>();
+        for(Activity activity : activities){
+            if(activity.getType().equalsIgnoreCase(s)){
+                temp.add(activity);
+            }
+        }
+        return temp;
+    }
+
+    public void displayByDuration(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return b.getDuration() - a.getDuration();
+                });
+        display();
+    }
+
 }

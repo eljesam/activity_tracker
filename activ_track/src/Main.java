@@ -7,7 +7,12 @@ import java.io.IOException;
 
 public class Main {
     public static void displayMenu(){
+        System.out.println("0. Exit");
         System.out.println("1. Display all activities");
+        System.out.println("2. Display all activities by natural ordering");
+        System.out.println("3. Display all activities by calories burnt");
+        System.out.println("4. Display all activities by type");
+        System.out.println("5. Display all activities by duration");
     }
     public static void readFile(String filename, ArrayList<Activity> activities,
                                 boolean hasHeaders) throws IOException {
@@ -64,6 +69,29 @@ public class Main {
                 case 1:
                     a.display();
                     break;
+                case 2:
+                    a.displayByNaturalOrdering();
+                    break;
+                case 3:
+                    a.displayByCalories();
+                    break;
+                case 4:
+                    System.out.println("Enter type of activity");
+                    String s = input.next();
+                    a.displayByType(s);
+                    if (a.displayByType(s).isEmpty()) {
+                        System.out.println("No activities of this type");
+                    } else {
+                        for (Activity activity : a.displayByType(s)) {
+                            System.out.println(activity);
+                        }
+                    }
+
+                    break;
+                case 5:
+                    a.displayByDuration();
+                    break;
+
                 default:
                     System.out.println("Invalid choice");
             }
