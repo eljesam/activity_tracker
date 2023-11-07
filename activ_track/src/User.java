@@ -34,7 +34,7 @@ display();
     public void displayByCalories(){
         Collections.sort(activities, new Comparator<Activity>(){
             public int compare(Activity a, Activity b){
-                return a.getType().compareTo(b.getType());
+                return (int) (a.getCaloriesBurned() - b.getCaloriesBurned());
 
             }
         });

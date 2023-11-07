@@ -109,6 +109,7 @@ public abstract class Activity implements Comparable<Activity> {
           }
        return (int) (a.distance-this.distance);
     }
+
     //calculate the duration from minutes to hours
     public double durationInHours(){
         return duration/60.0;

@@ -60,11 +60,40 @@ public class Main {
         }
     }
 
+
+
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         User a = new User("John");
         ArrayList<Activity> activities = new ArrayList<>();
-        readFile("activity_data_50.csv", activities, true);
+        String filename = "";
+        System.out.println("Enter filename");
+        System.out.println("1. activity_data_10.csv");
+        System.out.println("2. activity_data_50.csv");
+        System.out.println("3. activity_data_100.csv");
+        System.out.println("4. activity_data_1000.csv");
+
+        int choice1 = input.nextInt();
+        switch (choice1) {
+            case 1:
+                filename = "activity_data_10.csv";
+                break;
+            case 2:
+                filename = "activity_data_50.csv";
+                break;
+            case 3:
+                filename = "activity_data_100.csv";
+                break;
+            case 4:
+                filename = "activity_data_1000.csv";
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+
+
+
+        readFile(filename, activities, true);
         a.activities = activities;
         displayMenu();
         int choice = input.nextInt();
