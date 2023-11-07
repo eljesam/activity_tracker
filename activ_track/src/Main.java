@@ -9,14 +9,27 @@ public class Main {
     public static void displayMenu(){
         System.out.println("0. Exit");
         System.out.println("1. Display all activities");
-        System.out.println("2. Display all activities by natural ordering");
-        System.out.println("3. Display activities based on the longest distance per time");
-        System.out.println("4. Display all activities by type");
-        System.out.println("5. Display all activities by duration");
-//        System.out.println("6. Display all activities by date");
-        System.out.println("6. Display all activities by distance");
-        System.out.println("7. Display all activities by average heart rate");
-        System.out.println("8. Display all activities by intensity");
+        System.out.println("2. Display activities by natural ordering");
+        System.out.println("3. Display by distance in ascending order");
+        System.out.println("4. Display by distance in descending order");
+        System.out.println("5. Display by duration in ascending order");
+        System.out.println("6. Display by duration in descending order");
+        System.out.println("7. Display by calories burnt in descending order");
+        System.out.println("8. Display by type");
+        System.out.println("9. Display by date in ascending order");
+        System.out.println("10. Display by date in descending order");
+        //subsets
+        System.out.println("11. Display one type of activity");
+        System.out.println("12. display activities above a certain distance");
+        System.out.println("13. Display activities above a certain duration");
+
+//        System.out.println("3. Display activities based on the longest distance per time");
+//        System.out.println("4. Display data by type");
+//        System.out.println("5. Display all activities by duration");
+////        System.out.println("6. Display all activities by date");
+//        System.out.println("6. Display all activities by distance");
+//        System.out.println("7. Display all activities by average heart rate");
+//        System.out.println("8. Display all activities by intensity");
     }
     public static void readFile(String filename, ArrayList<Activity> activities,
                                 boolean hasHeaders) throws IOException {
@@ -45,8 +58,8 @@ public class Main {
         double distance;
         int averageHeartRate;
         StringTokenizer st = new StringTokenizer(line, ",");
-        type = st.nextToken();
-        date = st.nextToken();
+        type = st.nextToken().trim();
+        date = st.nextToken().trim();
         duration = Integer.parseInt(st.nextToken().trim());
         distance = Double.parseDouble(st.nextToken().trim());
         averageHeartRate = Integer.parseInt(st.nextToken().trim());
@@ -60,14 +73,12 @@ public class Main {
         }
     }
 
-
-
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         User a = new User("John");
         ArrayList<Activity> activities = new ArrayList<>();
         String filename = "";
-        System.out.println("Enter filename");
+        System.out.println("Chose File");
         System.out.println("1. activity_data_10.csv");
         System.out.println("2. activity_data_50.csv");
         System.out.println("3. activity_data_100.csv");
@@ -90,7 +101,6 @@ public class Main {
             default:
                 System.out.println("Invalid choice");
         }
-        //readFile("activity_data_10.csv", activities, true);
 
 
 
@@ -106,6 +116,48 @@ public class Main {
                 case 2:
                     a.displayByNaturalOrdering();
                     break;
+                case 3:
+                    a.displayByDistanceAsc();
+                    break;
+                case 4:
+                    a.displayByDistanceDesc();
+                    break;
+                case 5:
+                    a.displayByDurationAsc();
+                    break;
+                case 6:
+                    a.displayByDurationDesc();
+                    break;
+                case 7:
+                    a.displayByCalories();
+                    break;
+                case 8:
+                    a.displayAllByType();
+                    break;
+                case 9:
+                    a.displayByDateAsc();
+                    break;
+                case 10:
+                    a.displayByDateDesc();
+                    break;
+                case 11:
+                    System.out.println("Enter type of activity");
+                    String s = input.next();
+                    a.displayByTypeInput(s);
+                    break;
+
+                case 12:
+                    System.out.println("Enter distance");
+                    int distance = input.nextInt();
+                    a.displayAboveDistance(distance);
+                    break;
+
+                case 13:
+                    System.out.println("Enter duration");
+                    int duration = input.nextInt();
+                    a.displayAboveDuration(duration);
+                    break;
+/*
                 case 3:
                     a.displayByCalories();
                     break;
@@ -137,6 +189,7 @@ public class Main {
                 case 8:
                     a.displayByIntensity();
                     break;
+*/
 
                 default:
                     System.out.println("Invalid choice");

@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,25 +35,73 @@ display();
 }
 
     public void displayByCalories(){
-        Collections.sort(activities, new Comparator<Activity>(){
-            public int compare(Activity a, Activity b){
-                return (int) (a.getCaloriesBurned() - b.getCaloriesBurned());
-
-            }
-        });
+       //calories burnt in descending order
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return (int) (b.getCaloriesBurned() - a.getCaloriesBurned());
+                });
         display();
     }
 
-    public ArrayList<Activity> displayByType(String s){
-        ArrayList<Activity> temp = new ArrayList<Activity>();
-        for(Activity activity : activities){
-            if(activity.getType().equalsIgnoreCase(s)){
-                temp.add(activity);
+    public void displayByTypeInput(String s){
+        //sort by type and display as a table
+        System.out.printf("%20s %30s %30s %30s %30s %30s %30s %30s\n", "Type", "Date", "Duration", "Distance", "Average Heart Rate", "Intensity", "Calories Burnt", "Energy Expended");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for(Activity activities : activities){
+            if(activities.getType().equals(s)){
+                System.out.printf("%20s %30s %30d %30.2f %30d %30s %30.2f %30.2f\n", activities.getType(), activities.getDate(), activities.getDuration(), activities.getDistance(), activities.getAverageHeartRate(), activities.getIntensity(),activities.getCaloriesBurned(), activities.getEnergySpent());
             }
         }
-        return temp;
+    }
+    public void displayAllByType(){
+        //sort table by type
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return a.getType().compareTo(b.getType());
+                });
+        display();
     }
 
+    public void displayByDateAsc(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Collections.sort(activities,
+                (Activity a, Activity b) -> LocalDate.parse(a.getDate(), formatter).
+                compareTo(LocalDate.parse(b.getDate(), formatter)));
+        display();
+    }
+
+    public void displayByDateDesc(){
+       //use compare method to sort by date
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Collections.sort(activities,
+                (Activity a, Activity b) -> LocalDate.parse(b.getDate(), formatter).
+                        compareTo(LocalDate.parse(a.getDate(), formatter)));
+        display();
+
+        display();
+    }
+
+    public void displayAboveDistance(int distance){
+        //take in distance and display activities above that distance as a table
+System.out.printf("%20s %30s %30s %30s %30s %30s %30s %30s\n", "Type", "Date", "Duration", "Distance", "Average Heart Rate", "Intensity", "Calories Burnt", "Energy Expended");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for(Activity activities : activities) {
+            if (activities.getDistance() > distance) {
+                System.out.printf("%20s %30s %30d %30.2f %30d %30s %30.2f %30.2f\n", activities.getType(), activities.getDate(), activities.getDuration(), activities.getDistance(), activities.getAverageHeartRate(), activities.getIntensity(), activities.getCaloriesBurned(), activities.getEnergySpent());
+            }
+        }
+    }
+
+        public void displayAboveDuration(int duration){
+        //take in duration and display activities above that duration as a table
+System.out.printf("%20s %30s %30s %30s %30s %30s %30s %30s\n", "Type", "Date", "Duration", "Distance", "Average Heart Rate", "Intensity", "Calories Burnt", "Energy Expended");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for(Activity activities : activities){
+            if(activities.getDuration() > duration){
+                System.out.printf("%20s %30s %30d %30.2f %30d %30s %30.2f %30.2f\n", activities.getType(), activities.getDate(), activities.getDuration(), activities.getDistance(), activities.getAverageHeartRate(), activities.getIntensity(),activities.getCaloriesBurned(), activities.getEnergySpent());
+            }
+        }
+    }
     public void displayByDuration(){
         Collections.sort(activities,
                 (Activity a, Activity b) -> {
@@ -67,10 +118,18 @@ display();
         display();
     }
 
-    public void displayByDistance(){
+    public void displayByDistanceAsc(){
         Collections.sort(activities,
                 (Activity a, Activity b) -> {
-                    return Double.compare(b.getDistance(), a.getDistance());
+                    return (int) (a.getDistance() - b.getDistance());
+                });
+        display();
+    }
+
+    public void displayByDistanceDesc(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return (int) (b.getDistance() - a.getDistance());
                 });
         display();
     }
@@ -80,6 +139,24 @@ display();
                 Comparator.comparing(Activity::getIntensity));
         display();
     }
+
+    public void displayByDurationAsc(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return a.getDuration() - b.getDuration();
+                });
+        display();
+    }
+
+public void displayByDurationDesc(){
+        Collections.sort(activities,
+                (Activity a, Activity b) -> {
+                    return b.getDuration() - a.getDuration();
+                });
+        display();
+    }
+
+
 
 //    public void displayByDate() {
 //        Collections.sort(activities,

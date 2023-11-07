@@ -100,14 +100,8 @@ public abstract class Activity implements Comparable<Activity> {
 
     @Override
     public int compareTo(Activity a) {
-      if(this.distance>a.distance){
-          if(this.duration<a.duration){
-              return  this.type.compareTo(a.type);
-          }
-              return this.duration-a.duration;
+       return getDate().compareTo(a.getDate());
 
-          }
-       return (int) (a.distance-this.distance);
     }
 
     //calculate the duration from minutes to hours
