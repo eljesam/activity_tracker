@@ -196,8 +196,8 @@ public class Main {
                 default:
                     System.out.println("Invalid choice");
             }
-                    displayMenu();
-                    choice = input.nextInt();
+            displayMenu();
+            choice = input.nextInt();
 
 
 /*
@@ -216,27 +216,12 @@ public class Main {
                         }
                     }
 
-                    break;
-                case 5:
-                    a.displayByDuration();
-                    break;
-//                case 6:
-//                    a.displayByDate();
-//                    break;
-                case 6:
-                    a.displayByDistance();
-                    break;
-                case 7:
-                    a.displayByHeartRate();
-                    break;
-                case 8:
-                    a.displayByIntensity();
-                    break;
+
 */
 
 
-            }
-
-
         }
+
+
     }
+}

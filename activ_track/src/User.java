@@ -15,14 +15,13 @@ public class User {
         this.name = name;
     }
 
-    public String getName() {
+  /*  public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
+    }*/
 
 
     public void display() {
@@ -35,7 +34,7 @@ public class User {
     }
 
     public void displayByNaturalOrdering() {
-Collections.sort(activities);
+        Collections.sort(activities);
         display();
     }
 
@@ -109,21 +108,21 @@ Collections.sort(activities);
         }
     }
 
-    public void displayByDuration() {
+  /*  public void displayByDuration() {
         Collections.sort(activities,
                 (Activity a, Activity b) -> {
                     return b.getDuration() - a.getDuration();
                 });
         display();
-    }
+    }*/
 
-    public void displayByHeartRate() {
+    /*public void displayByHeartRate() {
         Collections.sort(activities,
                 (Activity a, Activity b) -> {
                     return b.getAverageHeartRate() - a.getAverageHeartRate();
                 });
         display();
-    }
+    }*/
 
     public void displayByDistanceAsc() {
         Collections.sort(activities,
@@ -141,11 +140,11 @@ Collections.sort(activities);
         display();
     }
 
-    public void displayByIntensity() {
+   /* public void displayByIntensity() {
         Collections.sort(activities,
                 Comparator.comparing(Activity::getIntensity));
         display();
-    }
+    }*/
 
     public void displayByDurationAsc() {
         Collections.sort(activities,
@@ -183,13 +182,13 @@ Collections.sort(activities);
         int cyclingCount = 0;
         int swimmingCount = 0;
         for (Activity activity : activities) {
-           if (activity.getType().equals("Running")) {
+            if (activity.getType().equals("Running")) {
                 totalRunningDistance += activity.getDistance();
                 runningCount++;
             } else if (activity.getType().equals("Cycling")) {
                 totalCyclingDistance += activity.getDistance();
                 cyclingCount++;
-            } else  {
+            } else {
                 totalSwimmingDistance += activity.getDistance();
                 swimmingCount++;
             }
@@ -225,20 +224,20 @@ Collections.sort(activities);
         }
         return -1;
     }
-public void searchByDate(){
-        //using binary search to search for activities by date
-    Scanner sc = new Scanner(System.in);
-    Collections.sort(activities);
-    System.out.println("Enter date to search for (in format dd/mm/yyyy: ");
-    String date = sc.nextLine();
-    int result = binarySearch(activities, date);
-    if (result == -1)
-        System.out.println("Activity not found");
-    else
-        System.out.println(activities.get(result));
-}
-}
 
+    public void searchByDate() {
+        //using binary search to search for activities by date
+        Scanner sc = new Scanner(System.in);
+        Collections.sort(activities);
+        System.out.println("Enter date to search for (in format dd/mm/yyyy: ");
+        String date = sc.nextLine();
+        int result = binarySearch(activities, date);
+        if (result == -1)
+            System.out.println("Activity not found");
+        else
+            System.out.println(activities.get(result));
+    }
+}
 
 
 //    public void displayByDate() {

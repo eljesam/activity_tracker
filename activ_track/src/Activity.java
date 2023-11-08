@@ -3,20 +3,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public abstract class Activity implements Comparable<Activity> {
-    //field type of activity
     private String type;
     private String date;
-    //field duration
+
     private int duration;
 
 
-    //field date
-
-
-    //field distance
     private double distance;
 
-    //field average heart rate
     private int averageHeartRate;
 
 
@@ -90,18 +84,18 @@ public abstract class Activity implements Comparable<Activity> {
 
     @Override
     public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Activity)) return false;
-            Activity activity = (Activity) o;
-            return getDuration() == activity.getDuration() &&
-                    Double.compare(activity.getDistance(), getDistance()) == 0 &&
-                    getAverageHeartRate() == activity.getAverageHeartRate() &&
-                    getType().equals(activity.getType()) &&
-                    getDate().equals(activity.getDate());
+        if (this == o) return true;
+        if (!(o instanceof Activity)) return false;
+        Activity activity = (Activity) o;
+        return getDuration() == activity.getDuration() &&
+                Double.compare(activity.getDistance(), getDistance()) == 0 &&
+                getAverageHeartRate() == activity.getAverageHeartRate() &&
+                getType().equals(activity.getType()) &&
+                getDate().equals(activity.getDate());
     }
 
-@Override
-public int compareTo(Activity o) {
+    @Override
+    public int compareTo(Activity o) {
 //compare objects by date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (LocalDate.parse(this.getDate(), formatter).isBefore(LocalDate.parse(o.getDate(), formatter))) {
@@ -112,22 +106,22 @@ public int compareTo(Activity o) {
             return 0;
         }
     }
+
     //calculate the duration from minutes to hours
-    public double durationInHours(){
-        return duration/60.0;
+    public double durationInHours() {
+        return duration / 60.0;
     }
 
     //calculate the average speed
-    public  double getAverageSpeed(double distance, double durationInHours){
-        return distance/durationInHours();
+    public double getAverageSpeed(double distance, double durationInHours) {
+        return distance / durationInHours();
     }
 
     public abstract Intensity getIntensity();
-   public abstract double getCaloriesBurned();
+
+    public abstract double getCaloriesBurned();
 
     public abstract double getEnergySpent();
-
-
 
 
 }

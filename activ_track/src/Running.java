@@ -6,34 +6,33 @@ public class Running extends Activity {
 
     public Running(String type, int duration, String date, double distance, int averageHeartRate) {
         super(type, duration, date, distance, averageHeartRate);
-        this.intensity= getIntensity();
-        this.caloriesBurnt=getCaloriesBurned();
-        this.energySpent=getEnergySpent();
+        this.intensity = getIntensity();
+        this.caloriesBurnt = getCaloriesBurned();
+        this.energySpent = getEnergySpent();
 
     }
 
-    public Intensity getIntensity()
-    {
+    public Intensity getIntensity() {
 
         //if speed is less than 4 km/h, return VERY_LIGHT
-        if (getAverageSpeed(getDistance(),durationInHours()) <= 4) {
+        if (getAverageSpeed(getDistance(), durationInHours()) <= 4) {
             return Intensity.VERY_LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 8) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 8) {
             return Intensity.LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 12) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 12) {
             return Intensity.MODERATE;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 16) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 16) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >16)
+        } else if (getAverageSpeed(getDistance(), durationInHours()) > 16)
             return Intensity.VERY_VIGOROUS;
-        else{
+        else {
             return null;
         }
     }
 
     public double getCaloriesBurned() {
         //intensity*duration in minutes
-        return getEnergySpent()*getDuration();
+        return getEnergySpent() * getDuration();
 
     }
 
@@ -51,11 +50,9 @@ public class Running extends Activity {
         }
     }
 
-        public String toString(){
-return "Running{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent+"}";
-        }
-
-
+    public String toString() {
+        return "Running{" + super.toString() + "\tIntensity: " + intensity + "\tCalories Burnt: " + caloriesBurnt + "\tEnergy Spent: " + energySpent + "}";
+    }
 
 
 }

@@ -1,31 +1,33 @@
-public class Cycling extends Activity{
+public class Cycling extends Activity {
     private Intensity intensity;
     private double caloriesBurnt;
     private double energySpent;
+
     public Cycling(String type, int duration, String date, double distance, int averageHeartRate) {
         super(type, duration, date, distance, averageHeartRate);
-        this.intensity= getIntensity();
-        this.caloriesBurnt=getCaloriesBurned();
-        this.energySpent=getEnergySpent();
+        this.intensity = getIntensity();
+        this.caloriesBurnt = getCaloriesBurned();
+        this.energySpent = getEnergySpent();
     }
+
     public Intensity getIntensity() {
-        if (getAverageSpeed(getDistance(),durationInHours()) < 8) {
+        if (getAverageSpeed(getDistance(), durationInHours()) < 8) {
             return Intensity.VERY_LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 16) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 16) {
             return Intensity.LIGHT;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 25) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 25) {
             return Intensity.MODERATE;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) <= 33) {
+        } else if (getAverageSpeed(getDistance(), durationInHours()) <= 33) {
             return Intensity.VIGOROUS;
-        } else if (getAverageSpeed(getDistance(),durationInHours()) >33)
+        } else if (getAverageSpeed(getDistance(), durationInHours()) > 33)
             return Intensity.VERY_VIGOROUS;
-        else{
+        else {
             return null;
         }
     }
 
     public double getCaloriesBurned() {
-        return getEnergySpent()*getDuration();
+        return getEnergySpent() * getDuration();
     }
 
     public double getEnergySpent() {
@@ -33,15 +35,16 @@ public class Cycling extends Activity{
             return 2;
         } else if (getIntensity() == Intensity.LIGHT) {
             return 5;
-        }else if (getIntensity()==Intensity.MODERATE){
+        } else if (getIntensity() == Intensity.MODERATE) {
             return 7;
-        } else if (getIntensity()==Intensity.VIGOROUS){
+        } else if (getIntensity() == Intensity.VIGOROUS) {
             return 13;
         } else {
             return 15;
+        }
     }
-}
-    public String toString(){
-        return "Cycling{"+super.toString()+"\tIntensity: "+intensity+"\tCalories Burnt: "+caloriesBurnt+"\tEnergy Spent: "+energySpent+"}";
+
+    public String toString() {
+        return "Cycling{" + super.toString() + "\tIntensity: " + intensity + "\tCalories Burnt: " + caloriesBurnt + "\tEnergy Spent: " + energySpent + "}";
     }
 }
