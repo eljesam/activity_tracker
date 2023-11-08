@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public abstract class Activity implements Comparable<Activity> {
@@ -98,12 +100,18 @@ public abstract class Activity implements Comparable<Activity> {
                     getDate().equals(activity.getDate());
     }
 
-    @Override
-    public int compareTo(Activity a) {
-       return getDate().compareTo(a.getDate());
-
+@Override
+public int compareTo(Activity o) {
+//compare objects by date
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        if (LocalDate.parse(this.getDate(), formatter).isBefore(LocalDate.parse(o.getDate(), formatter))) {
+            return -1;
+        } else if (LocalDate.parse(this.getDate(), formatter).isAfter(LocalDate.parse(o.getDate(), formatter))) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-
     //calculate the duration from minutes to hours
     public double durationInHours(){
         return duration/60.0;

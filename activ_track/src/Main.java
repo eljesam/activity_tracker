@@ -6,15 +6,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void mainMenu() {
+    public static void displayMenu() {
         System.out.println("0. Exit");
-        System.out.println("1. View Activities");
-        System.out.println("2. View Activity Subsets");
-        System.out.println("3. View Activity Statistics");
-    }
-
-    public static void activitiesMenu() {
-        System.out.println("0. Go back to main menu");
         System.out.println("1. Display all activities");
         System.out.println("2. Display activities by natural ordering");
         System.out.println("3. Display by distance in ascending order");
@@ -25,32 +18,16 @@ public class Main {
         System.out.println("8. Display by type");
         System.out.println("9. Display by date in ascending order");
         System.out.println("10. Display by date in descending order");
-        //subsets
+        System.out.println("11. Display one type of activity");
+        System.out.println("12. display activities above a certain distance");
+        System.out.println("13. Display activities above a certain duration");
+        System.out.println("14. Display activities on type of energy expended");
+        System.out.println("15. Average distance per activity");
+        System.out.println("16. Average calories burned");
+        System.out.println("17. Search by date");
     }
 
-    public static void subsetMenu() {
-        System.out.println("0. Go back to main menu");
-        System.out.println("1. Display one type of activity");
-        System.out.println("2. display activities above a certain distance");
-        System.out.println("3. Display activities above a certain duration");
-        System.out.println("4. Display activities on type of energy expended");
-    }
 
-    public static void statisticsMenu() {
-        System.out.println("0. Go back to main menu");
-        System.out.println("1. Average distance per activity");
-        System.out.println("2. Average calories burned");
-
-    }
-    public static void searchMenu(){
-        System.out.println("0. Go back to main menu");
-        System.out.println("1. Search by type");
-        System.out.println("2. Search by date");
-        System.out.println("3. Search by duration");
-        System.out.println("4. Search by distance");
-        System.out.println("5. Search by average heart rate");
-        System.out.println("6. Search by intensity");
-    }
 //        System.out.println("3. Display activities based on the longest distance per time");
 //        System.out.println("4. Display data by type");
 //        System.out.println("5. Display all activities by duration");
@@ -133,128 +110,95 @@ public class Main {
 
         readFile(filename, activities, true);
         a.activities = activities;
-        mainMenu();
-        int mainChoice = input.nextInt();
-        while (mainChoice != 0) {
+        displayMenu();
+        int choice = input.nextInt();
 
-            if (mainChoice == 1) {
-                activitiesMenu();
-                int activitiesChoice = input.nextInt();
-                while (activitiesChoice != 0) {
-
-
-                    switch (activitiesChoice) {
+        while (choice != 0) {
+            switch (choice) {
+                case 1:
+                    a.display();
+                    break;
+                case 2:
+                    a.displayByNaturalOrdering();
+                    break;
+                case 3:
+                    a.displayByDistanceAsc();
+                    break;
+                case 4:
+                    a.displayByDistanceDesc();
+                    break;
+                case 5:
+                    a.displayByDurationAsc();
+                    break;
+                case 6:
+                    a.displayByDurationDesc();
+                    break;
+                case 7:
+                    a.displayByCalories();
+                    break;
+                case 8:
+                    a.displayAllByType();
+                    break;
+                case 9:
+                    a.displayByDateAsc();
+                    break;
+                case 10:
+                    a.displayByDateDesc();
+                    break;
+                case 11:
+                    System.out.println("Enter type of activity");
+                    String s1 = input.next();
+                    a.displayByTypeInput(s1);
+                    break;
+                case 12:
+                    System.out.println("Enter distance");
+                    int d = input.nextInt();
+                    a.displayAboveDistance(d);
+                    break;
+                case 13:
+                    System.out.println("Enter duration");
+                    int dur = input.nextInt();
+                    a.displayAboveDuration(dur);
+                    break;
+                case 14:
+                    System.out.println("Select type of energy expended");
+                    System.out.println("1. VERY_LIGHT, 2. LIGHT, 3. MODERATE, 4. VIGOROUS, 5. VERY_VIGOROUS");
+                    int energy = input.nextInt();
+                    switch (energy) {
                         case 1:
-                            a.display();
+                            a.displayByTypeOfEnergy(Intensity.VERY_LIGHT);
                             break;
                         case 2:
-                            a.displayByNaturalOrdering();
+                            a.displayByTypeOfEnergy(Intensity.LIGHT);
                             break;
                         case 3:
-                            a.displayByDistanceAsc();
+                            a.displayByTypeOfEnergy(Intensity.MODERATE);
                             break;
                         case 4:
-                            a.displayByDistanceDesc();
+                            a.displayByTypeOfEnergy(Intensity.VIGOROUS);
                             break;
                         case 5:
-                            a.displayByDurationAsc();
-                            break;
-                        case 6:
-                            a.displayByDurationDesc();
-                            break;
-                        case 7:
-                            a.displayByCalories();
-                            break;
-                        case 8:
-                            a.displayAllByType();
-                            break;
-                        case 9:
-                            a.displayByDateAsc();
-                            break;
-                        case 10:
-                            a.displayByDateDesc();
+                            a.displayByTypeOfEnergy(Intensity.VERY_VIGOROUS);
                             break;
                         default:
                             System.out.println("Invalid choice");
                     }
-                    activitiesMenu();
-                    activitiesChoice = input.nextInt();
-                }
-
-            } else if (mainChoice == 2) {
-                subsetMenu();
-                int subsetChoice = input.nextInt();
-                while (subsetChoice != 0) {
-
-
-                    switch (subsetChoice) {
-                        case 11:
-                            System.out.println("Enter type of activity");
-                            String s = input.next();
-                            a.displayByTypeInput(s);
-                            break;
-
-                        case 12:
-                            System.out.println("Enter distance");
-                            int distance = input.nextInt();
-                            a.displayAboveDistance(distance);
-                            break;
-
-                        case 13:
-                            System.out.println("Enter duration");
-                            int duration = input.nextInt();
-                            a.displayAboveDuration(duration);
-                            break;
-
-                        case 14:
-                            System.out.println("Select type of energy expended");
-                            System.out.println("1. Very Light 2. Light 3. Moderate 4. Vigorous 5. Very Vigorous");
-                            int typeChoice = input.nextInt();
-                            switch (typeChoice) {
-                                case 1:
-                                    a.displayByTypeOfEnergy(Intensity.VERY_LIGHT);
-                                    break;
-                                case 2:
-                                    a.displayByTypeOfEnergy(Intensity.LIGHT);
-                                    break;
-                                case 3:
-                                    a.displayByTypeOfEnergy(Intensity.MODERATE);
-                                    break;
-                                case 4:
-                                    a.displayByTypeOfEnergy(Intensity.VIGOROUS);
-                                    break;
-                                case 5:
-                                    a.displayByTypeOfEnergy(Intensity.VERY_VIGOROUS);
-                                    break;
-                                default:
-                                    System.out.println("Invalid choice");
-                            }
-                            subsetMenu();
-                            subsetChoice = input.nextInt();
-                    }
-                }
-            } else if (mainChoice == 3) {
-                statisticsMenu();
-                int statisticsChoice = input.nextInt();
-                while (statisticsChoice != 0) {
-                    switch (statisticsChoice) {
-                        case 1:
-                            a.averageDistancePerActivity(activities);
-                            break;
-                        case 2:
-                            a.averageCaloriesBurned(activities);
-                            break;
-                        default:
-                            System.out.println("Invalid choice");
-                    }
-                    statisticsMenu();
-                    statisticsChoice = input.nextInt();
-                }
-
-            } else if ( mainChoice == 4) {
-
-
+                    break;
+                case 15:
+                    a.averageDistancePerActivity(activities);
+                    break;
+                case 16:
+                    a.averageCaloriesBurned(activities);
+                    break;
+                case 17:
+                    a.searchByDate();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
             }
+                    displayMenu();
+                    choice = input.nextInt();
+
 
 /*
                 case 3:
@@ -289,7 +233,6 @@ public class Main {
                     a.displayByIntensity();
                     break;
 */
-
 
 
             }

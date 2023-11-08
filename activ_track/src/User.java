@@ -3,6 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 import static java.util.Collections.binarySearch;
 
@@ -22,6 +23,8 @@ public class User {
         this.name = name;
     }
 
+
+
     public void display() {
         //display activities as a table
         System.out.printf("%20s %30s %30s %30s %30s %30s %30s %30s\n", "Type", "Date", "Duration", "Distance", "Average Heart Rate", "Intensity", "Calories Burnt", "Energy Expended");
@@ -32,7 +35,7 @@ public class User {
     }
 
     public void displayByNaturalOrdering() {
-        Collections.sort(activities);
+Collections.sort(activities);
         display();
     }
 
@@ -180,19 +183,15 @@ public class User {
         int cyclingCount = 0;
         int swimmingCount = 0;
         for (Activity activity : activities) {
-            switch (activity.getType()) {
-                case "Running" -> {
-                    totalRunningDistance += activity.getDistance();
-                    runningCount++;
-                }
-                case "Cycling" -> {
-                    totalCyclingDistance += activity.getDistance();
-                    cyclingCount++;
-                }
-                case "Swimming" -> {
-                    totalSwimmingDistance += activity.getDistance();
-                    swimmingCount++;
-                }
+           if (activity.getType().equals("Running")) {
+                totalRunningDistance += activity.getDistance();
+                runningCount++;
+            } else if (activity.getType().equals("Cycling")) {
+                totalCyclingDistance += activity.getDistance();
+                cyclingCount++;
+            } else  {
+                totalSwimmingDistance += activity.getDistance();
+                swimmingCount++;
             }
         }
         System.out.println("Average distance for Running: " + totalRunningDistance / runningCount);
@@ -210,7 +209,34 @@ public class User {
         System.out.println("Average calories burnt: " + totalCaloriesBurned / activities.size());
     }
 
-
+    int binarySearch(ArrayList<Activity> activities, String date) {
+        //binary search for date
+        int left = 0;
+        int right = activities.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int res = date.compareTo(activities.get(mid).getDate());
+            if (res == 0)
+                return mid;
+            if (res > 0)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+        return -1;
+    }
+public void searchByDate(){
+        //using binary search to search for activities by date
+    Scanner sc = new Scanner(System.in);
+    Collections.sort(activities);
+    System.out.println("Enter date to search for (in format dd/mm/yyyy: ");
+    String date = sc.nextLine();
+    int result = binarySearch(activities, date);
+    if (result == -1)
+        System.out.println("Activity not found");
+    else
+        System.out.println(activities.get(result));
+}
 }
 
 
